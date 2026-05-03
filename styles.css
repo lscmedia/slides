@@ -1,0 +1,121 @@
+:root {
+  --ink: #182026;
+  --muted: #5d686f;
+  --teal: #067a72;
+  --gold: #d99b27;
+  --paper: rgba(248, 245, 238, 0.9);
+  --line: rgba(24, 32, 38, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: #ffffff;
+  background: #071514;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow: hidden;
+}
+
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 50% 26%, rgba(6, 122, 114, 0.4), transparent 34%),
+    linear-gradient(135deg, #061110 0%, #102c2b 45%, #261e10 100%);
+}
+
+.slideshow-shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  align-items: end;
+  justify-items: center;
+  padding: 28px;
+  pointer-events: none;
+}
+
+.slideshow {
+  width: min(1120px, 100%);
+  pointer-events: auto;
+}
+
+.slide-status {
+  position: fixed;
+  left: 50%;
+  bottom: 98px;
+  transform: translateX(-50%);
+  width: min(760px, calc(100vw - 40px));
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 650;
+  text-align: center;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.32);
+}
+
+.slide-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.control-button {
+  width: 42px;
+  height: 42px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(24, 32, 38, 0.16);
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(12px);
+}
+
+.slide-dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slide-dot {
+  width: 48px;
+  height: 10px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.38);
+  cursor: pointer;
+  transition: width 180ms ease, background-color 180ms ease;
+}
+
+.slide-dot.is-active {
+  width: 72px;
+  background: var(--teal);
+}
+
+.load-error {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .slideshow-shell {
+    padding: 16px;
+  }
+
+  .slide-status {
+    bottom: 86px;
+  }
+}
